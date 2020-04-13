@@ -1,5 +1,5 @@
 import React from 'react';
-import { loginRedirectUrl } from '../utils.js';
+import { loginRedirectUrl } from '../utils/auth';
 import '../styles/NotAuthenticated.css';
 
 function NotAuthenticated(props) {

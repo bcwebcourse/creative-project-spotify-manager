@@ -1,12 +1,13 @@
 import React, { createContext, useState, useLayoutEffect } from 'react';
-import * as utils from '../utils.js';
+import { initialState, storeItem } from '../utils/storage';
+import { createExprDate, loginRedirectUrl } from '../utils/auth';
 
 export const AuthContext = createContext();
 
 function AuthContextProvider(props) {
-  const [accessToken, setAccessToken] = useState(utils.initialState('accessToken'));
-  const [exprDate, setExprDate] = useState(utils.initialState('exprDate'));
-  const [userGrantedAccess, setUserGrantedAccess] = useState(utils.initialState('userGrantedAccess', true));
+  const [accessToken, setAccessToken] = useState(initialState('accessToken'));
+  const [exprDate, setExprDate] = useState(initialState('exprDate'));
+  const [userGrantedAccess, setUserGrantedAccess] = useState(initialState('userGrantedAccess', true));
 
   function userIsAuthenticated() {
     const currentDate = new Date();
@@ -20,24 +21,24 @@ function AuthContextProvider(props) {
     const search = new URLSearchParams(window.location.search.substr(1));
     if (search.get('error')) {
       setUserGrantedAccess(false);
-      utils.storeItem('userGrantedAccess', false);
+      storeItem('userGrantedAccess', false);
       return;
     }
     const hash = new URLSearchParams(window.location.hash.substr(1));
     const token = hash.get('access_token');
     if (token) {
       const numSecondsUntilExpr = parseInt(hash.get('expires_in'));
-      const date = utils.createExprDate(numSecondsUntilExpr);
+      const date = createExprDate(numSecondsUntilExpr);
       setAccessToken(token);
       setExprDate(date);
       setUserGrantedAccess(true);
-      utils.storeItem('accessToken', token);
-      utils.storeItem('exprDate', date.toString());
-      utils.storeItem('userGrantedAccess', true);
-      window.location.href = '/';
+      storeItem('accessToken', token);
+      storeItem('exprDate', date.toString());
+      storeItem('userGrantedAccess', true);
+      window.location.href = process.env.PUBLIC_URL;
       return;
     }    
-    window.location.href = utils.loginRedirectUrl();
+    window.location.href = loginRedirectUrl();
   }
 
   useLayoutEffect(authenticateUser, [accessToken, exprDate, userGrantedAccess]);

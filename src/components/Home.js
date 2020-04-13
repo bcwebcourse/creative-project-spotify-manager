@@ -19,7 +19,7 @@ function Home() {
       setUserData(data);
     }
     fetchUserData();
-  });
+  }, [accessToken]);
 
   return (
     <div>
