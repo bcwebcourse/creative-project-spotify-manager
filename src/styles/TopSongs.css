@@ -1,0 +1,50 @@
+.success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #dfd;
+}
+
+header.top-songs-header {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
+
+header .top-songs-button {
+  width: 15%;
+  margin: 0 30px 0 30px;
+}
+
+header .top-songs-title {
+  display: inline-block;
+  margin: 0 0 0 0;
+}
+
+header.top-songs-charts-header {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.top-songs-charts-header div.song-ranking-placeholder {
+  width: 44px;
+}
+
+.top-songs-charts-header div {
+  margin-right: 10px;
+  text-align: left;
+  width: 37.5%;
+}
+
+.top-songs-charts-header .song-artist {
+  width: 20%;
+}
+
+.top-songs-charts-header div.song-popularity {
+  width: 35%;
+  text-align: center;
+}

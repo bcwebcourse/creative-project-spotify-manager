@@ -1,7 +1,7 @@
 import client from '../client.js';
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const scopes = ['playlist-modify-public', 'user-read-email'];
+const scopes = ['playlist-modify-public', 'user-read-email', 'user-top-read'];
 
 export function loginRedirectUrl() {
   const authQueryString = new URLSearchParams();
