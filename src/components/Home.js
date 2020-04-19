@@ -29,28 +29,31 @@ function Home() {
     setTimeframe(timeframe);
     setTimeframeReadable(e.target.innerHTML);
     setPage('TopSongs');
-  }
+  } 
 
   return (
     <div>
-      <h1>Home Page</h1>
+      <div class="sidenav"> 
+        <h3 class="app_title">Spotify Manager</h3>
+        <h1>Home Page</h1>
+        <h3>Your Top Songs of the Past:</h3>
+        <button onClick={e => handleTopSongsNavigation(e, 'short_term')}>
+          Month
+        </button>
+        <button onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
+          Six Months
+        </button>
+        <button onClick={e => handleTopSongsNavigation(e, 'long_term')}>
+          Few Years
+        </button>
+      </div>
       <h3>User Data</h3>
-      <div>
+      <div class="user_name">
         Name: {userData.display_name}
       </div>
-      <div>
+      <div class="user_email">
         Email: {userData.email}
       </div>
-      <h3>Your Top Songs of the Past:</h3>
-      <button onClick={e => handleTopSongsNavigation(e, 'short_term')}>
-        Month
-      </button>
-      <button onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
-        Six Months
-      </button>
-      <button onClick={e => handleTopSongsNavigation(e, 'long_term')}>
-        Few Years
-      </button>
     </div>
   );
 }
