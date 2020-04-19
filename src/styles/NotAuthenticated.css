@@ -1,0 +1,19 @@
+div {
+    text-align: center;
+    display: inline-block;
+    font-family: 'Roberto', sans-serif;
+    color: #fff;
+}
+
+body {
+    background-color: #111;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #3897f0;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
