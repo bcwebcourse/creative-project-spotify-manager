@@ -12,7 +12,7 @@ function AuthContextProvider(props) {
   function userIsAuthenticated() {
     const currentDate = new Date();
     const expirationDate = new Date(exprDate);
-    return accessToken && userGrantedAccess && currentDate < expirationDate;
+    return accessToken && userGrantedAccess && (currentDate < expirationDate);
   }
 
   function authenticateUser() {

@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: rgb(31, 31, 31)!important;
+    background-image: black!important;
     font-family: 'Roberto', sans-serif;
     height: 100%;
 }
@@ -21,6 +21,7 @@ body {
     overflow: hidden;
 }
 .content {
+    background-image: linear-gradient(to bottom, rgb(15, 15, 15), rgb(41, 40, 40));
     flex: 1;
     padding: 20px 20px 20px 20px;
     height: 100%;

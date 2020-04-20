@@ -24,7 +24,7 @@ header.top-songs-header {
 header .top-songs-button {
   width: 15%;
   margin: 0 30px 0 30px;
-  color: rgba(255, 255, 255, 0.849);
+  color: rgba(255, 255, 255, 0.877);
   background-color: var(--spotify-green);
   font-size: 14px;
   font-weight: 600;

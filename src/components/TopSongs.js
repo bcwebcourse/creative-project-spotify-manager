@@ -8,10 +8,11 @@ function TopSongs() {
   const [topSongs, setTopSongs] = useState([]);
   const [createPlaylistSuccess, setCreatePlaylistSuccess] = useState(false);
 
-  const { accessToken } = useContext(AuthContext);
+  const { accessToken, authenticateUser } = useContext(AuthContext);
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
   useLayoutEffect(() => {
+    authenticateUser();
     async function fetchTopSongs() {
       const params = new URLSearchParams({
         time_range: timeframe,
@@ -80,7 +81,7 @@ function TopSongs() {
     <div className="top-songs">
       {createPlaylistSuccess &&
         <div className="success-message">
-          Success! Open Spotify to see your new playlist.
+          Success! Go to the Home page or open Spotify to see your new playlist.
         </div>
       }
       <header className="top-songs-header">

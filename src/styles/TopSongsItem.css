@@ -1,9 +1,8 @@
 .song-row {
   display: flex;
-  padding: 8px 0 8px 0;
-  border-top: 2px solid black;
+  padding: 10px 0 10px 0;
+  border-top: 1px solid rgba(194, 194, 194, 0.171);
   align-items: center;
-
 }
 
 .song-row div {

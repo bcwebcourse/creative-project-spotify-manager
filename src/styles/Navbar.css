@@ -1,7 +1,6 @@
 nav {
   height: 100%;
-  width: 30%;
-  background-color: #000000;
+  width: 25%;
   overflow-x: hidden;
   padding: 20px 20px 20px 30px;
   border-right: 1px solid white;
@@ -41,7 +40,7 @@ nav button {
   height: 40px;
   font-size: 25px;
   color: white;
-  background-color: #111111;
+  background-color: transparent;
   border: none;
   display: block;
 }

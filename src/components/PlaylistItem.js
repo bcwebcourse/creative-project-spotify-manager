@@ -5,15 +5,19 @@ function PlaylistItem(props) {
   let playlistName = props.playlist.name.substr(0, 25);
   if (playlistName < props.playlist.name)
     playlistName += '...';
-  function handlePlayListChange(e, playlist) {
-      // props.setPage(playlist);
+  function handlePlayListChange(e, playlistName) {
+      // props.setPage(playlistName);
+      console.log(playlistName);
   } 
 
   return (
     <div className="playlist-obj">
-        <button onClick={e => handlePlayListChange(e, props.playlist.name)}>
-          <img className="playlist-thumbnail" src={props.playlist.images[0].url} alt="playlist"/>
-        </button>
+        <img
+          className="playlist-thumbnail"
+          src={props.playlist.images[0].url}
+          alt="playlist"
+          onClick={e => handlePlayListChange(e, props.playlist.name)}
+        />
         <p>
           {playlistName}
         </p>

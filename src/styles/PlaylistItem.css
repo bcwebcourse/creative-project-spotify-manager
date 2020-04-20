@@ -1,8 +1,20 @@
 .playlist-thumbnail {
     width: 200px;
     height: 200px;
+    border: 2px solid white;
+    border-style: outset;
 }
 
 .playlist-obj {
     margin: 20px;
+}
+
+.playlist-obj:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.playlist-obj:active {
+    position: relative;
+    top: 2px;
 }

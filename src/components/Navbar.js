@@ -21,7 +21,7 @@ function Navbar(props) {
         <h1 className="app-title">Spotify Manager</h1>
       </div>
       <button className="top-songs-nav-item" onClick={() => props.setPage('Home')}>Home</button>
-      <h2 className="top-songs-nav-item">Your Top Songs of the Past:</h2>
+      <h2 className="top-songs-nav-item">Top Songs of the Past:</h2>
       <button onClick={e => handleTopSongsNavigation(e, 'short_term')}>
         Month
       </button>
