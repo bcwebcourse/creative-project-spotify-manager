@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/creative-project-spotify-manager/static/css/main.b1470768.chunk.css",
-    "main.js": "/creative-project-spotify-manager/static/js/main.9569f71b.chunk.js",
-    "main.js.map": "/creative-project-spotify-manager/static/js/main.9569f71b.chunk.js.map",
+    "main.css": "/creative-project-spotify-manager/static/css/main.935026ce.chunk.css",
+    "main.js": "/creative-project-spotify-manager/static/js/main.8d12cdc0.chunk.js",
+    "main.js.map": "/creative-project-spotify-manager/static/js/main.8d12cdc0.chunk.js.map",
     "runtime-main.js": "/creative-project-spotify-manager/static/js/runtime-main.5c63947e.js",
     "runtime-main.js.map": "/creative-project-spotify-manager/static/js/runtime-main.5c63947e.js.map",
     "static/js/2.f545d472.chunk.js": "/creative-project-spotify-manager/static/js/2.f545d472.chunk.js",
     "static/js/2.f545d472.chunk.js.map": "/creative-project-spotify-manager/static/js/2.f545d472.chunk.js.map",
     "index.html": "/creative-project-spotify-manager/index.html",
-    "precache-manifest.f3f77e8fb6cf32aed38f50c41abacf11.js": "/creative-project-spotify-manager/precache-manifest.f3f77e8fb6cf32aed38f50c41abacf11.js",
+    "precache-manifest.ba17192a80800c31267d7dbeb341a206.js": "/creative-project-spotify-manager/precache-manifest.ba17192a80800c31267d7dbeb341a206.js",
     "service-worker.js": "/creative-project-spotify-manager/service-worker.js",
-    "static/css/main.b1470768.chunk.css.map": "/creative-project-spotify-manager/static/css/main.b1470768.chunk.css.map",
+    "static/css/main.935026ce.chunk.css.map": "/creative-project-spotify-manager/static/css/main.935026ce.chunk.css.map",
     "static/js/2.f545d472.chunk.js.LICENSE.txt": "/creative-project-spotify-manager/static/js/2.f545d472.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5c63947e.js",
     "static/js/2.f545d472.chunk.js",
-    "static/css/main.b1470768.chunk.css",
-    "static/js/main.9569f71b.chunk.js"
+    "static/css/main.935026ce.chunk.css",
+    "static/js/main.8d12cdc0.chunk.js"
   ]
 }
