@@ -14,7 +14,7 @@ export function loginRedirectUrl() {
 
 export function createExprDate(numSecondsUntilExpr) {
   const date = new Date();
-  const exprDateBuffer = 30 * 1000;
+  const exprDateBuffer = numSecondsUntilExpr * 1000;
   date.setTime(date.getTime() + exprDateBuffer);
   return date;
 }
