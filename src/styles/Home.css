@@ -5,3 +5,8 @@
 .user-email {
     padding: 0px 10px;
 }
+
+.playlists{
+    display: flex;
+    flex-wrap: wrap;
+}
