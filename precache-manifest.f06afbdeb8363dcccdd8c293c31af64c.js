@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dbf82b49be2e86fe911d28afeb7a6620",
+    "revision": "fe085a6f6ced6817a909020776df4382",
     "url": "/creative-project-spotify-manager/index.html"
   },
   {
-    "revision": "bb074b46fd793de062bb",
+    "revision": "699da48e1a56d78967fe",
     "url": "/creative-project-spotify-manager/static/css/main.ee196ff5.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/creative-project-spotify-manager/static/js/2.f545d472.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bb074b46fd793de062bb",
-    "url": "/creative-project-spotify-manager/static/js/main.12fc4167.chunk.js"
+    "revision": "699da48e1a56d78967fe",
+    "url": "/creative-project-spotify-manager/static/js/main.f6419541.chunk.js"
   },
   {
     "revision": "f094a4b3f22d7cb85898",
