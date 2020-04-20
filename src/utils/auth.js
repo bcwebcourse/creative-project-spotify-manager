@@ -18,3 +18,7 @@ export function createExprDate(numSecondsUntilExpr) {
   date.setTime(date.getTime() + exprDateBuffer);
   return date;
 }
+
+export function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

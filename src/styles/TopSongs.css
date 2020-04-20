@@ -24,21 +24,21 @@ header.top-songs-header {
 header .top-songs-button {
   width: 15%;
   margin: 0 30px 0 30px;
-  color: white;
+  color: rgba(255, 255, 255, 0.849);
   background-color: var(--spotify-green);
   font-size: 14px;
-  border: 1px solid black;
+  font-weight: 600;
   border-radius: 5px;
   border: none;
 }
 
 header .top-songs-button:hover {
   background-color: rgb(27, 185, 82);
+  cursor: pointer;
 }
 
 header .top-songs-button:active {
-  box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid black;  
 }
 
 header .top-songs-button:focus {

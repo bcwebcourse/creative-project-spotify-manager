@@ -1,6 +1,6 @@
 import React, { createContext, useState, useLayoutEffect } from 'react';
 import { initialState, storeItem } from '../utils/storage';
-import { createExprDate, loginRedirectUrl } from '../utils/auth';
+import { createExprDate, loginRedirectUrl, timeout } from '../utils/auth';
 
 export const AuthContext = createContext();
 
@@ -41,13 +41,27 @@ function AuthContextProvider(props) {
     window.location.href = loginRedirectUrl();
   }
 
+  async function logoutUser() {
+    storeItem('accessToken', '');
+    storeItem('exprDate', '');
+    storeItem('userGrantedAccess', false);
+    const logoutUrl = 'https://accounts.spotify.com/en/logout';
+    const windowOptions = 'width=100,height=100,top=0,left=0,toolbar=1,location=1,' +
+                         'directories=1,status=1,menubar=1,scrollbars=1';
+    const spotifyLogoutWindow = window.open(logoutUrl, 'Spotify Logout', windowOptions);
+    await timeout(1300);
+    spotifyLogoutWindow.close()
+    window.location.href = loginRedirectUrl();
+  }
+
   useLayoutEffect(authenticateUser, [accessToken, exprDate, userGrantedAccess]);
 
   const context = {
     accessToken,
     userGrantedAccess,
     userIsAuthenticated,
-    authenticateUser
+    authenticateUser,
+    logoutUser
   }
 
   return (
