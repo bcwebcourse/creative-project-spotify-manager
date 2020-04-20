@@ -4,6 +4,12 @@ import Navbar from './Navbar';
 import AuthContextProvider from '../contexts/AuthContextProvider';
 import TimeframeContextProvider from '../contexts/TimeframeContextProvider';
 import '../styles/App.css';
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route
+// } from "react-router-dom";
+
 
 function App() {
   const [page, setPage] = useState('Home');
