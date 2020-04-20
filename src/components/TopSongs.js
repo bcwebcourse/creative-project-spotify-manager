@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useLayoutEffect, useContext } from 'react';
 import TopSongsItem from './TopSongsItem';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
@@ -11,7 +11,7 @@ function TopSongs() {
   const { accessToken } = useContext(AuthContext);
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function fetchTopSongs() {
       const params = new URLSearchParams({
         time_range: timeframe,
@@ -77,7 +77,7 @@ function TopSongs() {
   }
 
   return (
-    <div>
+    <div className="top-songs">
       {createPlaylistSuccess &&
         <div className="success-message">
           Success! Open Spotify to see your new playlist.
@@ -85,9 +85,9 @@ function TopSongs() {
       }
       <header className="top-songs-header">
         <button className="top-songs-button">
-          Filter Button Placeholder
+          Filter Button
         </button>
-        <h1 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h1>
+        <h2 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h2>
         <button className="top-songs-button" onClick={handleCreatePlaylist}>
           Create Playlist
         </button>

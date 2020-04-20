@@ -1,26 +1,54 @@
+.top-songs {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
 .success-message {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
-  background-color: #dfd;
+  background-color: var(--spotify-green);
+  border-radius: 5px;
 }
 
 header.top-songs-header {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 30px;
   justify-content: space-around;
+  border-bottom: 1px solid white;
+  padding-bottom: 27px;
 }
 
 header .top-songs-button {
   width: 15%;
   margin: 0 30px 0 30px;
+  color: white;
+  background-color: var(--spotify-green);
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+  border: none;
+}
+
+header .top-songs-button:hover {
+  background-color: rgb(27, 185, 82);
+}
+
+header .top-songs-button:active {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+header .top-songs-button:focus {
+  outline: none;
 }
 
 header .top-songs-title {
   display: inline-block;
   margin: 0 0 0 0;
+  width: 50%;
 }
 
 header.top-songs-charts-header {

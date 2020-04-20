@@ -1,0 +1,61 @@
+nav {
+  height: 100%;
+  width: 30%;
+  background-color: #000000;
+  overflow-x: hidden;
+  padding: 20px 20px 20px 30px;
+  border-right: 2px solid white;
+}
+
+nav .logo {
+  width: 50px;
+  height: auto;
+}
+
+nav .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+nav .app-title { 
+  color: var(--spotify-green);
+  display: inline-block;
+  margin: 0 0 0 18px;
+  height: 100%;
+  text-align: left;
+}
+
+nav .top-songs-nav-item {
+  text-align: left;
+  margin: 0 0 10px 0;
+  padding: 0 0 0 0;
+  font-weight: 600;
+}
+
+nav button {
+  margin: 6px 8px 6px 24px;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+  background-color: #111111;
+  border: none;
+  display: block;
+}
+
+nav button:hover {
+  color: var(--spotify-green);
+}
+
+nav button:focus {
+  outline: none;
+  color: var(--spotify-green);
+}
+
+nav button:active {
+  position: relative;
+  top: 2px;
+}

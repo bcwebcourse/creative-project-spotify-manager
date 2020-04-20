@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState }from 'react';
 import PagePicker from './PagePicker';
+import Navbar from './Navbar';
 import AuthContextProvider from '../contexts/AuthContextProvider';
-import PageContextProvider from '../contexts/PageContextProvider';
 import TimeframeContextProvider from '../contexts/TimeframeContextProvider';
 import '../styles/App.css';
 
 function App() {
+  const [page, setPage] = useState('Home');
+
   return (
     <AuthContextProvider>
-      <PageContextProvider>
         <TimeframeContextProvider>
-          <PagePicker />
+          <div className="main">
+            <Navbar setPage={setPage} />
+            <div className="content">
+              <PagePicker page={page} />
+            </div>
+          </div>
         </TimeframeContextProvider>
-      </PageContextProvider>
     </AuthContextProvider>
   );
 }
