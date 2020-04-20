@@ -34,6 +34,7 @@ header .top-songs-button {
 
 header .top-songs-button:hover {
   background-color: rgb(27, 185, 82);
+  cursor: pointer;
 }
 
 header .top-songs-button:active {
