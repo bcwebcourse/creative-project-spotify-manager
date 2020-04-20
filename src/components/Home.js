@@ -25,13 +25,15 @@ function Home() {
 
   return (
     <div>
-      <h1>Welcome to Spotify Manager.</h1>
-      <p>
-        To see your top songs, use the nav bar on the left. If you like what you see, 
-        click "create playlist" on any of those pages to generate a new playlist of those 
-        top songs. Come back here to see that playlist appear below, or open up Spotify 
-        to start listening right away.
-      </p>
+      <div className="home-header">
+        <h1>Welcome to Spotify Manager.</h1>
+        <p>
+          To see your top songs, use the navigation bar to the left. If you like what you see, 
+          click "create playlist" on any of those pages to generate a new playlist of those 
+          songs. Come back here to see that playlist appear below, or open up Spotify 
+          to start listening right away.
+        </p>
+      </div>
       <h2 className="home-section-header">Playlists</h2>
       <div className="playlists">
         {userPlaylists.map((playlist, idx) =>
