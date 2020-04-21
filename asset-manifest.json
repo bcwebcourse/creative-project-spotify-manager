@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/creative-project-spotify-manager/static/css/main.21ce376a.chunk.css",
+    "main.css": "/creative-project-spotify-manager/static/css/main.8b3bcacd.chunk.css",
     "main.js": "/creative-project-spotify-manager/static/js/main.69b53b43.chunk.js",
     "main.js.map": "/creative-project-spotify-manager/static/js/main.69b53b43.chunk.js.map",
     "runtime-main.js": "/creative-project-spotify-manager/static/js/runtime-main.5c63947e.js",
@@ -8,15 +8,15 @@
     "static/js/2.23e46977.chunk.js": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js",
     "static/js/2.23e46977.chunk.js.map": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js.map",
     "index.html": "/creative-project-spotify-manager/index.html",
-    "precache-manifest.413898a3260b3046292af22733201c9e.js": "/creative-project-spotify-manager/precache-manifest.413898a3260b3046292af22733201c9e.js",
+    "precache-manifest.31c44f3d66daab1f006233edcd0c18fb.js": "/creative-project-spotify-manager/precache-manifest.31c44f3d66daab1f006233edcd0c18fb.js",
     "service-worker.js": "/creative-project-spotify-manager/service-worker.js",
-    "static/css/main.21ce376a.chunk.css.map": "/creative-project-spotify-manager/static/css/main.21ce376a.chunk.css.map",
+    "static/css/main.8b3bcacd.chunk.css.map": "/creative-project-spotify-manager/static/css/main.8b3bcacd.chunk.css.map",
     "static/js/2.23e46977.chunk.js.LICENSE.txt": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5c63947e.js",
     "static/js/2.23e46977.chunk.js",
-    "static/css/main.21ce376a.chunk.css",
+    "static/css/main.8b3bcacd.chunk.css",
     "static/js/main.69b53b43.chunk.js"
   ]
 }
