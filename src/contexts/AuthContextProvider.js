@@ -1,4 +1,4 @@
-import React, { createContext, useState, useLayoutEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { initialState, storeItem } from '../utils/storage';
 import { createExprDate, loginRedirectUrl, timeout } from '../utils/auth';
 
@@ -54,7 +54,7 @@ function AuthContextProvider(props) {
     window.location.href = loginRedirectUrl();
   }
 
-  useLayoutEffect(authenticateUser, [accessToken, exprDate, userGrantedAccess]);
+  useEffect(authenticateUser, []);
 
   const context = {
     accessToken,
