@@ -44,11 +44,12 @@ nav .top-songs-nav-item {
   text-align: left;
   margin: 0 0 10px 0;
   padding: 0 0 0 0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: inherit;
 }
 
 nav button {
+  width: max-content;
   margin: 6px 8px 6px 24px;
   height: 40px;
   font-size: inherit;
