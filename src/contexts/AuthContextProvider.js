@@ -15,14 +15,12 @@ function AuthContextProvider(props) {
     return accessToken && userGrantedAccess && (currentDate < expirationDate);
   }
 
-  function authenticateUser() {
-    if (userIsAuthenticated())
-      return;
+  function handleAuthRedirect() {
     const search = new URLSearchParams(window.location.search.substr(1));
     if (search.get('error')) {
       setUserGrantedAccess(false);
       storeItem('userGrantedAccess', false);
-      return;
+      return
     }
     const hash = new URLSearchParams(window.location.hash.substr(1));
     const token = hash.get('access_token');
@@ -36,8 +34,12 @@ function AuthContextProvider(props) {
       storeItem('exprDate', date.toString());
       storeItem('userGrantedAccess', true);
       window.location.href = process.env.PUBLIC_URL;
-      return;
-    }    
+    }  
+  }
+
+  function authenticateUser() {
+    handleAuthRedirect();
+    if (userIsAuthenticated()) return;
     window.location.href = loginRedirectUrl();
   }
 
@@ -54,12 +56,13 @@ function AuthContextProvider(props) {
     window.location.href = loginRedirectUrl();
   }
 
-  useEffect(authenticateUser, []);
+  useEffect(handleAuthRedirect, []);
 
   const context = {
     accessToken,
     userGrantedAccess,
     userIsAuthenticated,
+    handleAuthRedirect,
     authenticateUser,
     logoutUser
   };

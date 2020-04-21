@@ -102,11 +102,11 @@ function TopSongs() {
         </div>
       }
       <header className="top-songs-header">
-        <button className="top-songs-button">
+        <button className="spotify-button top-songs-button">
           Filter Button
         </button>
         <h2 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h2>
-        <button className="top-songs-button" onClick={handleCreatePlaylist}>
+        <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
           Create Playlist
         </button>
       </header>

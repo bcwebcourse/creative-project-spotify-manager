@@ -6,10 +6,10 @@ import { AuthContext } from '../contexts/AuthContextProvider';
 import { PageContext } from '../contexts/PageContextProvider';
 
 function PagePicker() {
-  const { userGrantedAccess } = useContext(AuthContext);
+  const { userIsAuthenticated } = useContext(AuthContext);
   const { page } = useContext(PageContext);
 
-  if (!userGrantedAccess)
+  if (!userIsAuthenticated())
     return <NotAuthenticated />
   
   switch (page) {
