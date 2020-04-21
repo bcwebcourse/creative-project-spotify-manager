@@ -1,13 +1,7 @@
 nav {
   height: 100%;
   width: 265px;
-  overflow-x: hidden;
   padding: 20px 20px 20px 30px;
-}
-
-nav .logo {
-  width: 50px;
-  height: auto;
 }
 
 nav .title {
@@ -18,12 +12,32 @@ nav .title {
   padding-bottom: 20px;
 }
 
+nav .logo {
+  width: 50px;
+  height: auto;
+}
+
 nav .app-title { 
   color: var(--spotify-green);
-  display: inline-block;
+  display: flex;
   margin: 0 0 0 10px;
   height: 100%;
+  align-items: center;
   text-align: left;
+}
+
+nav .nav-body {
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+}
+
+nav .nav-body button {
+  text-align: left;
+}
+
+nav .home-button {
+  font-size: inherit;
 }
 
 nav .top-songs-nav-item {
@@ -31,12 +45,13 @@ nav .top-songs-nav-item {
   margin: 0 0 10px 0;
   padding: 0 0 0 0;
   font-weight: 600;
+  font-size: inherit;
 }
 
 nav button {
   margin: 6px 8px 6px 24px;
   height: 40px;
-  font-size: 25px;
+  font-size: inherit;
   color: white;
   background-color: transparent;
   border: none;
@@ -56,4 +71,63 @@ nav button:focus {
 nav button:active {
   position: relative;
   top: 2px;
+}
+
+@media only screen and (max-width: 850px) {
+  nav {
+    box-sizing: border-box;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  nav .title {
+    width: fit-content;
+    margin: 0 30px 0 0;
+    padding: 0px;
+    align-items: center;
+  }
+
+  nav .nav-body {
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 8px;
+  }
+
+  nav .top-songs-nav-item {
+    font-weight: normal;
+  }
+
+  nav h2.top-songs-nav-item {
+    display: none;
+  }
+
+  nav .nav-body button {
+    white-space: nowrap;
+    margin: 5px 5px 5px 5px;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  nav {
+    flex-direction: column;
+    height: 130px;
+  }
+
+  nav .title {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+
+  nav .nav-body button {
+    margin: 2px 2px 2px 2px;
+  }
+
+
 }

@@ -1,5 +1,5 @@
-import React, { useState, useLayoutEffect, useContext } from 'react';
-import TopSongsItem from './TopSongsItem';
+import React, { useState, useEffect, useContext } from 'react';
+import TopSongsChart from './TopSongsChart';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
 
@@ -14,7 +14,7 @@ function TopSongs() {
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setCreatePlaylistSuccess(false);
     authenticateUser();
     async function fetchTopSongs() {
@@ -110,15 +110,9 @@ function TopSongs() {
           Create Playlist
         </button>
       </header>
-      <header className="top-songs-charts-header">
-        <div className="song-ranking-placeholder"></div>
-        <div>Title</div>
-        <div className="song-artist">Artist</div>
-        <div className="song-popularity">Popularity / 100</div>
-      </header>
-      {topSongs.map((song, idx) =>
-        <TopSongsItem key={idx} rank={idx + 1} song={song}/>
-      )}
+      {topSongs.length ?
+      <TopSongsChart songs={topSongs} /> :
+      <h2 className="loading-indicator">Loading...</h2>}
     </div>
   );
 }

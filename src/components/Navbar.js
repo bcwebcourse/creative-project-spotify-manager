@@ -40,24 +40,47 @@ function Navbar() {
     setPage('TopSongs');
   }
 
+  function adjustElementsToFitScreen() {
+    const windowWidth = window.innerWidth || 
+                        document.documentElement.clientWidth ||
+                        document.body.clientWidth;
+    if (windowWidth <= 370) {
+      const mediumTerm = document.getElementById('medium-term');
+      mediumTerm.innerHTML = '6 Months';
+      const longTerm = document.getElementById('long-term');
+      longTerm.innerHTML = 'Years';
+    }
+    else {
+      const mediumTerm = document.getElementById('medium-term');
+      mediumTerm.innerHTML = 'Six Months';
+      const longTerm = document.getElementById('long-term');
+      longTerm.innerHTML = 'Few Years';
+    }
+  }
+
+  window.onresize = adjustElementsToFitScreen;
+
+
   return (
     <nav>
-      <div className="title">
+      <header className="title">
         <img className="logo" src={publicUrl('/favicon.ico')} alt="Logo"/>
         <h1 className="app-title">Spotify Manager</h1>
-      </div>
-      <button id="home-button" className="top-songs-nav-item" onClick={handleHomeNavigation}>Home</button>
-      <h2 className="top-songs-nav-item">Top Songs of the Past:</h2>
-      <button id="short-term" onClick={e => handleTopSongsNavigation(e, 'short_term')}>
-        Month
-      </button>
-      <button id="medium-term" onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
-        Six Months
-      </button>
-      <button id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
-        Few Years
-      </button>
-      <button className="top-songs-nav-item" onClick={logoutUser}>Logout</button>
+      </header>
+      <section className="nav-body">
+        <button id="home-button" className="top-songs-nav-item" onClick={handleHomeNavigation}>Home</button>
+        <h2 className="top-songs-nav-item">Top Songs of the Past:</h2>
+        <button id="short-term" onClick={e => handleTopSongsNavigation(e, 'short_term')}>
+          Month
+        </button>
+        <button id="medium-term" onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
+          Six Months
+        </button>
+        <button id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
+          Few Years
+        </button>
+        <button className="top-songs-nav-item" onClick={logoutUser}>Logout</button>
+      </section>
     </nav>
   );
 }

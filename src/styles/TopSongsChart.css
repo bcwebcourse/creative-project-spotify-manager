@@ -1,0 +1,30 @@
+.top-songs-chart {
+  display: block;
+  text-align: left;
+}
+
+header.top-songs-chart-header {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.top-songs-chart-header div.song-ranking-placeholder {
+  width: 44px;
+}
+
+.top-songs-chart-header div {
+  margin-right: 10px;
+  text-align: left;
+  width: 37.5%;
+}
+
+.top-songs-chart-header .song-artist {
+  width: 20%;
+}
+
+.top-songs-chart-header div.song-popularity {
+  width: 35%;
+  text-align: center;
+}
