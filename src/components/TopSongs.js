@@ -30,7 +30,7 @@ function TopSongs() {
       setTopSongs(data.items);
     }
     fetchTopSongs();
-  }, [accessToken, timeframe]);
+  }, [authenticateUser, accessToken, timeframe]);
 
   async function handleCreatePlaylist(e) {
     const userRes = await fetch('https://api.spotify.com/v1/me', {

@@ -22,7 +22,7 @@ function Home() {
       setUserPlaylists(data.items);
     }
     fetchUserPlaylist();
-  }, [accessToken]);
+  }, [authenticateUser, accessToken]);
 
   return (
     <div>
