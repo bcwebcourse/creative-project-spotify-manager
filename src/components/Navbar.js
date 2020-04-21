@@ -1,12 +1,14 @@
 import React, { useContext, useLayoutEffect } from 'react';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
 import { AuthContext } from '../contexts/AuthContextProvider';
+import { PageContext } from '../contexts/PageContextProvider';
 import publicUrl from '../utils/publicUrl';
 import '../styles/Navbar.css';
 
-function Navbar(props) {
+function Navbar() {
   const { setTimeframe, setTimeframeReadable } = useContext(TimeframeContext);
   const { logoutUser } = useContext(AuthContext);
+  const { setPage } = useContext(PageContext);
 
   useLayoutEffect(() => {
     const homeButton = document.getElementById('home-button');
@@ -28,14 +30,14 @@ function Navbar(props) {
 
   function handleHomeNavigation(e) {
     styleNavButtons(e.target);
-    props.setPage('Home');
+    setPage('Home');
   }
 
   function handleTopSongsNavigation(e, timeframe) {
     styleNavButtons(e.target);
     setTimeframe(timeframe);
     setTimeframeReadable(e.target.innerHTML);
-    props.setPage('TopSongs');
+    setPage('TopSongs');
   }
 
   return (

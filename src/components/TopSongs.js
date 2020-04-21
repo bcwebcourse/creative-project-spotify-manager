@@ -2,16 +2,20 @@ import React, { useState, useLayoutEffect, useContext } from 'react';
 import TopSongsItem from './TopSongsItem';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
+
 import '../styles/TopSongs.css';
 
 function TopSongs() {
   const [topSongs, setTopSongs] = useState([]);
   const [createPlaylistSuccess, setCreatePlaylistSuccess] = useState(false);
+  const [playlistId, setPlaylistId] = useState('');
 
   const { accessToken, authenticateUser } = useContext(AuthContext);
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
+
   useLayoutEffect(() => {
+    setCreatePlaylistSuccess(false);
     authenticateUser();
     async function fetchTopSongs() {
       const params = new URLSearchParams({
@@ -31,6 +35,14 @@ function TopSongs() {
     }
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
+
+  function handleNavigateHome() {
+    window.location.href = process.env.PUBLIC_URL;
+  }
+
+  function handleOpenSpotifyPlaylists() {
+    window.open(`https://open.spotify.com/playlist/${playlistId}`);
+  }
 
   async function handleCreatePlaylist(e) {
     const userRes = await fetch('https://api.spotify.com/v1/me', {
@@ -60,9 +72,10 @@ function TopSongs() {
       })
     });
     const createPlaylistData = await createPlaylistRes.json();
-    const playlistId = createPlaylistData.id;
+    console.log(createPlaylistData);
+    await setPlaylistId(createPlaylistData.id);
     const songUris = topSongs.map(song => song.uri);
-    const addSongsEndpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+    const addSongsEndpoint = `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`;
     const addSongsRes = await fetch(addSongsEndpoint, {
       method: 'POST',
       headers: {
@@ -81,7 +94,11 @@ function TopSongs() {
     <div className="top-songs">
       {createPlaylistSuccess &&
         <div className="success-message">
-          Success! Go to the Home page or open Spotify to see your new playlist.
+          Success! Go to the 
+          <button className="nav-link" onClick={handleNavigateHome}>Home page</button> 
+          or open 
+          <button className="nav-link" onClick={handleOpenSpotifyPlaylists}>Spotify</button> 
+          to see your new playlist.
         </div>
       }
       <header className="top-songs-header">
