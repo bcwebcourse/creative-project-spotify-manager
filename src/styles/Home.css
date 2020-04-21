@@ -1,9 +1,17 @@
+.home {
+    height: 100%;
+}
+
 .home-header {
     padding-bottom: 20px;
     border-bottom: 1px solid white;
 }
 
-.home-section-header {
+.home-body {
+    height: 100%;
+}
+
+.home-body-header {
     margin: 40px 0 20px 0;
 }
 
@@ -11,4 +19,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.loading-indicator {
+    margin-top: 20%;
+    text-align: center;
 }
