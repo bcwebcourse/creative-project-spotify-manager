@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/creative-project-spotify-manager/static/css/main.5661a6f6.chunk.css",
-    "main.js": "/creative-project-spotify-manager/static/js/main.e2589bd7.chunk.js",
-    "main.js.map": "/creative-project-spotify-manager/static/js/main.e2589bd7.chunk.js.map",
+    "main.css": "/creative-project-spotify-manager/static/css/main.126f224e.chunk.css",
+    "main.js": "/creative-project-spotify-manager/static/js/main.faad7db9.chunk.js",
+    "main.js.map": "/creative-project-spotify-manager/static/js/main.faad7db9.chunk.js.map",
     "runtime-main.js": "/creative-project-spotify-manager/static/js/runtime-main.5c63947e.js",
     "runtime-main.js.map": "/creative-project-spotify-manager/static/js/runtime-main.5c63947e.js.map",
     "static/js/2.23e46977.chunk.js": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js",
     "static/js/2.23e46977.chunk.js.map": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js.map",
     "index.html": "/creative-project-spotify-manager/index.html",
-    "precache-manifest.ed295171deec8b1ea42fec6d78ea79fb.js": "/creative-project-spotify-manager/precache-manifest.ed295171deec8b1ea42fec6d78ea79fb.js",
+    "precache-manifest.1c9cd7c7ae24ddf885d7c407159ab669.js": "/creative-project-spotify-manager/precache-manifest.1c9cd7c7ae24ddf885d7c407159ab669.js",
     "service-worker.js": "/creative-project-spotify-manager/service-worker.js",
-    "static/css/main.5661a6f6.chunk.css.map": "/creative-project-spotify-manager/static/css/main.5661a6f6.chunk.css.map",
+    "static/css/main.126f224e.chunk.css.map": "/creative-project-spotify-manager/static/css/main.126f224e.chunk.css.map",
     "static/js/2.23e46977.chunk.js.LICENSE.txt": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5c63947e.js",
     "static/js/2.23e46977.chunk.js",
-    "static/css/main.5661a6f6.chunk.css",
-    "static/js/main.e2589bd7.chunk.js"
+    "static/css/main.126f224e.chunk.css",
+    "static/js/main.faad7db9.chunk.js"
   ]
 }
