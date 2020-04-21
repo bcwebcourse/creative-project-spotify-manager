@@ -13,6 +13,7 @@ function Navbar() {
   useLayoutEffect(() => {
     const homeButton = document.getElementById('home-button');
     styleNavButtons(homeButton);
+    window.onresize = adjustElementsToFitScreen;
   }, []);
 
   function styleNavButtons(button) {
@@ -36,7 +37,7 @@ function Navbar() {
   function handleTopSongsNavigation(e, timeframe) {
     styleNavButtons(e.target);
     setTimeframe(timeframe);
-    setTimeframeReadable(e.target.innerHTML);
+    setTimeframeReadable(e.target.value);
     setPage('TopSongs');
   }
 
@@ -58,9 +59,6 @@ function Navbar() {
     }
   }
 
-  window.onresize = adjustElementsToFitScreen;
-
-
   return (
     <nav>
       <header className="title">
@@ -70,13 +68,13 @@ function Navbar() {
       <section className="nav-body">
         <button id="home-button" className="top-songs-nav-item" onClick={handleHomeNavigation}>Home</button>
         <h2 className="top-songs-nav-item">Top Songs of the Past:</h2>
-        <button id="short-term" onClick={e => handleTopSongsNavigation(e, 'short_term')}>
+        <button value="Month" id="short-term" onClick={e => handleTopSongsNavigation(e, 'short_term')}>
           Month
         </button>
-        <button id="medium-term" onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
+        <button value="Six Months" id="medium-term" onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
           Six Months
         </button>
-        <button id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
+        <button value="Few Years" id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
           Few Years
         </button>
         <button className="top-songs-nav-item" onClick={logoutUser}>Logout</button>

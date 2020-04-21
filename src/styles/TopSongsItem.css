@@ -6,14 +6,21 @@
 }
 
 .song-row div {
+  white-space: nowrap;
   margin-right: 10px;
   text-align: left;
   width: 40%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .song-row div.song-ranking {
   width: 50px;
   text-align: right;
+}
+
+.song-row div.song-artist {
+  width: 40%;
 }
 
 .song-row div.song-popularity {

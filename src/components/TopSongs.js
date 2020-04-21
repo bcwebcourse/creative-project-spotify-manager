@@ -13,7 +13,6 @@ function TopSongs() {
   const { accessToken, authenticateUser } = useContext(AuthContext);
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
-
   useEffect(() => {
     setCreatePlaylistSuccess(false);
     authenticateUser();
@@ -22,7 +21,7 @@ function TopSongs() {
         time_range: timeframe,
         limit: 50
       });
-      const endpoint = 'https://api.spotify.com/v1/me/top/tracks?' + params;
+      const endpoint = `https://api.spotify.com/v1/me/top/tracks?${params}`;
       const res = await fetch(endpoint, {
         headers: {
           'Accept': 'application/json',
@@ -72,7 +71,6 @@ function TopSongs() {
       })
     });
     const createPlaylistData = await createPlaylistRes.json();
-    console.log(createPlaylistData);
     await setPlaylistId(createPlaylistData.id);
     const songUris = topSongs.map(song => song.uri);
     const addSongsEndpoint = `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`;
@@ -86,7 +84,6 @@ function TopSongs() {
       body: JSON.stringify(songUris)
     });
     const addSongsData = await addSongsRes.json();
-    console.log(addSongsData);
     if (addSongsData.snapshot_id) setCreatePlaylistSuccess(true);
   }
 
@@ -101,7 +98,18 @@ function TopSongs() {
           to see your new playlist.
         </div>
       }
-      <header className="top-songs-header">
+      <header className="top-songs-small-header">
+        <div className="top-songs-small-header-buttons">
+          <button className="spotify-button top-songs-button">
+            Filter Button
+          </button>
+          <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
+            Create Playlist
+          </button>
+        </div>
+        <h2 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h2>
+      </header>
+      <header className="top-songs-large-header">
         <button className="spotify-button top-songs-button">
           Filter Button
         </button>

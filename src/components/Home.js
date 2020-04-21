@@ -10,7 +10,8 @@ function Home() {
   useEffect(() => {
     authenticateUser();
     async function fetchUserPlaylist() {
-      const endpoint = 'https://api.spotify.com/v1/me/playlists?';
+      const params = new URLSearchParams({ limit: 50 });
+      const endpoint = `https://api.spotify.com/v1/me/playlists?${params}`;
       const res = await fetch(endpoint, {
         headers: {
           'Accept': 'application/json',
@@ -22,7 +23,7 @@ function Home() {
       setUserPlaylists(data.items);
     }
     fetchUserPlaylist();
-  }, [authenticateUser, accessToken]);
+  });
 
   return (
     <div className="home">
