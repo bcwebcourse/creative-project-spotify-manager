@@ -75,3 +75,9 @@ header .top-songs-title {
   margin: 0 0 0 0;
   width: 50%;
 }
+
+@media only screen and (max-width: 850px) {
+  header.top-songs-header {
+    margin-top: 0;
+  }
+}
