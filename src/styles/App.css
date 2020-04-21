@@ -21,18 +21,11 @@ body {
     overflow: hidden;
 }
 
-@media only screen and (max-width: 850px) {
-    .main {
-        flex-direction: column;
-    }
-}
-
 .content {
     flex: 1;
     padding: 20px 20px 20px 20px;
     height: 100%;
     overflow: scroll;
-    scrollbar-color: transparent white;
     background-image: linear-gradient(
         to top,
         rgb(22, 22, 22),
@@ -42,4 +35,26 @@ body {
         rgb(48, 47, 47),
         rgb(73, 73, 73)
     );
+}
+
+@media only screen and (max-width: 850px) {
+    body {
+        background-image: linear-gradient(
+            to bottom,
+            rgb(0, 0, 0),
+            rgb(22, 22, 22),
+            rgb(22, 22, 22),
+            rgb(22, 22, 22),
+            rgb(48, 47, 47),
+            rgb(73, 73, 73)
+        );
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .content {
+        background-image: none;
+    }
 }
