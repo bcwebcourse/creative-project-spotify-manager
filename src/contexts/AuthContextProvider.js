@@ -62,7 +62,7 @@ function AuthContextProvider(props) {
     userIsAuthenticated,
     authenticateUser,
     logoutUser
-  }
+  };
 
   return (
     <AuthContext.Provider value={context}>

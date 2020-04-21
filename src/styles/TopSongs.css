@@ -8,37 +8,61 @@
   align-items: center;
   justify-content: center;
   height: 40px;
-  background-color: var(--spotify-green);
+  background-color: #1db954;
   border-radius: 5px;
+}
+
+.success-message .nav-link {
+  color: white;
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: underline;
+}
+
+.success-message .nav-link:hover {
+  cursor: pointer;
+  color: rgb(18, 128, 57);
+}
+
+.success-message .nav-link:focus {
+  outline: none;
 }
 
 header.top-songs-header {
   display: flex;
   margin-top: 15px;
   margin-bottom: 30px;
+  align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid white;
   padding-bottom: 27px;
 }
 
 header .top-songs-button {
-  width: 15%;
-  margin: 0 30px 0 30px;
-  color: rgba(255, 255, 255, 0.877);
-  background-color: var(--spotify-green);
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 5px;
+  width: 18%;
+  color: white;
+  letter-spacing: 1.76px;
+  text-transform: uppercase;
+  background-color: #1db954;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 20px;
   border: none;
+  padding: 10px;
 }
 
 header .top-songs-button:hover {
-  background-color: rgb(27, 185, 82);
+  background-color: var(--spotify-green);
   cursor: pointer;
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
 }
 
 header .top-songs-button:active {
-  border: 1px solid black;  
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 header .top-songs-button:focus {

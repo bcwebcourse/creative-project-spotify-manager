@@ -9,7 +9,7 @@ function TimeframeContextProvider(props) {
   const context = {
     timeframe, setTimeframe,
     timeframeReadable, setTimeframeReadable
-  }
+  };
 
   return (
     <TimeframeContext.Provider value={context}>
