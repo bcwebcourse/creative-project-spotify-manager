@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import TopSongsChart from './TopSongsChart';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
+import * as spotify from '../utils/fetch';
 
 import '../styles/TopSongs.css';
 
@@ -14,24 +15,19 @@ function TopSongs() {
   const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
   useEffect(() => {
-    setCreatePlaylistSuccess(false);
-    authenticateUser();
     async function fetchTopSongs() {
       const params = new URLSearchParams({
         time_range: timeframe,
         limit: 50
       });
-      const endpoint = `https://api.spotify.com/v1/me/top/tracks?${params}`;
-      const res = await fetch(endpoint, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
-        }
+      const topSongsData = await spotify.get({
+        endpoint: `https://api.spotify.com/v1/me/top/tracks?${params}`,
+        accessToken
       });
-      const data = await res.json();
-      setTopSongs(data.items);
+      setTopSongs(topSongsData.items);
     }
+    setCreatePlaylistSuccess(false);
+    authenticateUser();
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
 
@@ -44,46 +40,31 @@ function TopSongs() {
   }
 
   async function handleCreatePlaylist(e) {
-    const userRes = await fetch('https://api.spotify.com/v1/me', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      }
+    authenticateUser();
+    const userData = await spotify.get({
+      endpoint: 'https://api.spotify.com/v1/me',
+      accessToken
     });
-    const userData = await userRes.json();
     const date = new Date();
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const timeOptions = { hour: '2-digit', minute: '2-digit' };
     const currentDate = date.toLocaleDateString(undefined, dateOptions);
     const currentTime = date.toLocaleTimeString([], timeOptions);
-    const createPlaylistEndpoint = `https://api.spotify.com/v1/users/${userData.id}/playlists`;
-    const createPlaylistRes = await fetch(createPlaylistEndpoint, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      },
-      body: JSON.stringify({
+    const createPlaylistData = await spotify.post({
+      endpoint: `https://api.spotify.com/v1/users/${userData.id}/playlists`,
+      accessToken,
+      body: {
         name: `Top Songs of the Past ${timeframeReadable}`,
-        description: `This playlist was created for you by Spotify Manager on ${currentDate} at ${currentTime}.`
-      })
+        description: 'This playlist was created for you by Spotify ' + 
+                     `Manager on ${currentDate} at ${currentTime}.`
+      }
     });
-    const createPlaylistData = await createPlaylistRes.json();
-    await setPlaylistId(createPlaylistData.id);
-    const songUris = topSongs.map(song => song.uri);
-    const addSongsEndpoint = `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`;
-    const addSongsRes = await fetch(addSongsEndpoint, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`
-      },
-      body: JSON.stringify(songUris)
+    setPlaylistId(createPlaylistData.id);
+    const addSongsData = await spotify.post({
+      endpoint: `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`,
+      accessToken,
+      body: topSongs.map(song => song.uri)
     });
-    const addSongsData = await addSongsRes.json();
     if (addSongsData.snapshot_id) setCreatePlaylistSuccess(true);
   }
 

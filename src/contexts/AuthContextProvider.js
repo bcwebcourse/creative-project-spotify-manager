@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { initialState, storeItem } from '../utils/storage';
-import { createExprDate, loginRedirectUrl, timeout } from '../utils/auth';
+import * as auth from '../utils/auth';
 
 export const AuthContext = createContext();
 
@@ -28,17 +28,21 @@ function AuthContextProvider(props) {
     const token = hash.get('access_token');
     if (token) {
       const numSecondsUntilExpr = parseInt(hash.get('expires_in'));
-      const date = createExprDate(numSecondsUntilExpr);
+      const date = auth.createExprDate(numSecondsUntilExpr);
       setAccessToken(token);
       setExprDate(date);
       setUserGrantedAccess(true);
       storeItem('accessToken', token);
       storeItem('exprDate', date.toString());
       storeItem('userGrantedAccess', true);
-      window.location.href = process.env.PUBLIC_URL;
-      return;
-    }    
-    window.location.href = loginRedirectUrl();
+      auth.stripHashFragmentFromUrl();
+    }  
+  }
+
+  function authenticateUser() {
+    if (userIsAuthenticated()) return;
+    handleAuthRedirect();
+    window.location.href = auth.loginRedirectUrl();
   }
 
   async function logoutUser() {
@@ -49,9 +53,9 @@ function AuthContextProvider(props) {
     const windowOptions = 'width=100,height=100,top=0,left=0,toolbar=1,location=1,' +
                          'directories=1,status=1,menubar=1,scrollbars=1';
     const spotifyLogoutWindow = window.open(logoutUrl, 'Spotify Logout', windowOptions);
-    await timeout(1300);
+    await auth.timeout(1300);
     spotifyLogoutWindow.close()
-    window.location.href = loginRedirectUrl();
+    window.location.href = auth.loginRedirectUrl();
   }
 
   useEffect(authenticateUser, []);

@@ -47,15 +47,15 @@ function Navbar() {
                         document.body.clientWidth;
     if (windowWidth <= 370) {
       const mediumTerm = document.getElementById('medium-term');
-      mediumTerm.innerHTML = '6 Months';
+      mediumTerm.textContent = '6 Months';
       const longTerm = document.getElementById('long-term');
-      longTerm.innerHTML = 'Years';
+      longTerm.textContent = 'Years';
     }
     else {
       const mediumTerm = document.getElementById('medium-term');
-      mediumTerm.innerHTML = 'Six Months';
+      mediumTerm.textContent = 'Six Months';
       const longTerm = document.getElementById('long-term');
-      longTerm.innerHTML = 'Few Years';
+      longTerm.textContent = 'Few Years';
     }
   }
 

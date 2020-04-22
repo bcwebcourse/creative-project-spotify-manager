@@ -22,3 +22,7 @@ export function createExprDate(numSecondsUntilExpr) {
 export function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function stripHashFragmentFromUrl() {
+  window.history.replaceState(null, null, ' ');
+}

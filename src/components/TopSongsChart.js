@@ -10,10 +10,9 @@ function TopSongsChart({ songs }) {
                         document.body.clientWidth;
     const songPopularity = document.querySelector('#song-popularity');
     if (windowWidth <= 500)
-      songPopularity.innerHTML = 'Pop.';
+      songPopularity.textContent = 'Pop.';
     else
-      songPopularity.innerHTML = 'Popularity';
-
+      songPopularity.textContent = 'Popularity';
   }
 
   useEffect(() => {
