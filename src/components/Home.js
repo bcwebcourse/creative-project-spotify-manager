@@ -23,7 +23,7 @@ function Home() {
       setUserPlaylists(data.items);
     }
     fetchUserPlaylist();
-  });
+  }, [accessToken, authenticateUser]);
 
   return (
     <div className="home">
