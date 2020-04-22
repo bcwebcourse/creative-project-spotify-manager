@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "527c711de03493fa4882af9fb1363762",
+    "revision": "edd887be3f559c188c5d744776c31d02",
     "url": "/creative-project-spotify-manager/index.html"
   },
   {
-    "revision": "a87e1924f8175a491772",
+    "revision": "29bae83eb99a68f6ee11",
     "url": "/creative-project-spotify-manager/static/css/main.126f224e.chunk.css"
   },
   {
-    "revision": "30d8c3b52d4a75ef7345",
-    "url": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js"
+    "revision": "62ba88a15231a69d68bd",
+    "url": "/creative-project-spotify-manager/static/js/2.b9b6c8cc.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/creative-project-spotify-manager/static/js/2.23e46977.chunk.js.LICENSE.txt"
+    "url": "/creative-project-spotify-manager/static/js/2.b9b6c8cc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a87e1924f8175a491772",
-    "url": "/creative-project-spotify-manager/static/js/main.faad7db9.chunk.js"
+    "revision": "29bae83eb99a68f6ee11",
+    "url": "/creative-project-spotify-manager/static/js/main.3608d575.chunk.js"
   },
   {
     "revision": "f094a4b3f22d7cb85898",
