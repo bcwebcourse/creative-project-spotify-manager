@@ -15,7 +15,7 @@ function AuthContextProvider(props) {
     return accessToken && userGrantedAccess && (currentDate < expirationDate);
   }
 
-  function authenticateUser() {
+  function handleAuthRedirect() {
     if (userIsAuthenticated())
       return;
     const search = new URLSearchParams(window.location.search.substr(1));
