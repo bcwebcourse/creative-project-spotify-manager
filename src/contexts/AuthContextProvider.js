@@ -16,13 +16,11 @@ function AuthContextProvider(props) {
   }
 
   function handleAuthRedirect() {
-    if (userIsAuthenticated())
-      return;
     const search = new URLSearchParams(window.location.search.substr(1));
     if (search.get('error')) {
       setUserGrantedAccess(false);
       storeItem('userGrantedAccess', false);
-      return;
+      return
     }
     const hash = new URLSearchParams(window.location.hash.substr(1));
     const token = hash.get('access_token');
@@ -58,12 +56,13 @@ function AuthContextProvider(props) {
     window.location.href = auth.loginRedirectUrl();
   }
 
-  useEffect(authenticateUser, []);
+  useEffect(handleAuthRedirect, []);
 
   const context = {
     accessToken,
     userGrantedAccess,
     userIsAuthenticated,
+    handleAuthRedirect,
     authenticateUser,
     logoutUser
   };
