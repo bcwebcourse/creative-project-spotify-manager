@@ -11,6 +11,8 @@
   background-color: #1db954;
   border-radius: 5px;
   margin-bottom: 20px;
+  padding: 0 10px 0 10px;
+  font-size: 1.5vw;
 }
 
 .success-message .nav-link {
@@ -59,24 +61,42 @@ header.top-songs-large-header {
   padding-bottom: 27px;
 }
 
+header.top-songs-large-header .top-songs-button {
+  white-space: nowrap;
+  font-size: .9vw;
+}
+
+
 header .top-songs-button {
-  width: 18%;
+  width: 23%;
 }
 
 header .top-songs-title {
   display: inline-block;
   text-align: center;
-  margin: 0 0 0 0;
-  width: 50%;
+  margin: 0 20px 0 20px;
+  width: max-content;
 }
 
 @media only screen and (max-width: 850px) {
+  .success-message {
+    font-size: 2.2vw;
+  }
+
   header.top-songs-large-header {
     margin-top: 0;
+  }
+
+  header.top-songs-large-header .top-songs-button {
+    font-size: 1.2vw;
   }
 }
 
 @media only screen and (max-width: 500px) {
+  .success-message {
+    font-size: 2.8vw;
+  }
+
   header.top-songs-small-header {
     display: flex;
     flex-direction: column;
@@ -98,6 +118,6 @@ header .top-songs-title {
 
 @media only screen and (max-width: 390px) {
   header.top-songs-small-header .top-songs-button {
-    white-space: normal;
+    font-size: 2vw;
   }
 }

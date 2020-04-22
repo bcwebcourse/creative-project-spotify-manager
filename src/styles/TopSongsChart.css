@@ -35,6 +35,6 @@ header.top-songs-chart-header {
   }
   
   .top-songs-chart-header div.song-popularity {
-    width: 20%;
+    display: none;
   }
 }

@@ -68,12 +68,21 @@ function TopSongs() {
     if (addSongsData.snapshot_id) setCreatePlaylistSuccess(true);
   }
 
+  function getTopSongsTitle() {
+    if (timeframe === 'short_term')
+      return `Top Songs of the ${timeframeReadable}`;
+    else if (timeframe === 'medium_term')
+      return `Top Songs of the Past ${timeframeReadable}`;
+    else if (timeframe === 'long_term')
+      return `Top Songs of ${timeframeReadable}`;
+  }
+
   return (
     <div className="top-songs">
       {createPlaylistSuccess &&
         <div className="success-message">
-          Success! Go to the 
-          <button className="nav-link" onClick={handleNavigateHome}>Home page</button> 
+          Success! Go 
+          <button className="nav-link" onClick={handleNavigateHome}>Home</button> 
           or open 
           <button className="nav-link" onClick={handleOpenSpotifyPlaylists}>Spotify</button> 
           to see your new playlist.
@@ -88,13 +97,13 @@ function TopSongs() {
             Create Playlist
           </button>
         </div>
-        <h2 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h2>
+        <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
       </header>
       <header className="top-songs-large-header">
         <button className="spotify-button top-songs-button">
           Filter Button
         </button>
-        <h2 className="top-songs-title">Top Songs of the Past {timeframeReadable}</h2>
+        <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
         <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
           Create Playlist
         </button>
