@@ -13,7 +13,6 @@ function Navbar() {
   useLayoutEffect(() => {
     const homeButton = document.getElementById('home-button');
     styleNavButtons(homeButton);
-    window.onresize = adjustElementsToFitScreen;
   }, []);
 
   function styleNavButtons(button) {
@@ -41,24 +40,6 @@ function Navbar() {
     setPage('TopSongs');
   }
 
-  function adjustElementsToFitScreen() {
-    const windowWidth = window.innerWidth || 
-                        document.documentElement.clientWidth ||
-                        document.body.clientWidth;
-    if (windowWidth <= 370) {
-      const mediumTerm = document.getElementById('medium-term');
-      mediumTerm.textContent = '6 Months';
-      const longTerm = document.getElementById('long-term');
-      longTerm.textContent = 'Years';
-    }
-    else {
-      const mediumTerm = document.getElementById('medium-term');
-      mediumTerm.textContent = 'Six Months';
-      const longTerm = document.getElementById('long-term');
-      longTerm.textContent = 'Few Years';
-    }
-  }
-
   return (
     <nav>
       <header className="title">
@@ -67,15 +48,15 @@ function Navbar() {
       </header>
       <section className="nav-body">
         <button id="home-button" className="top-songs-nav-item" onClick={handleHomeNavigation}>Home</button>
-        <h2 className="top-songs-nav-item">Top Songs of the Past:</h2>
+        <h2 className="top-songs-nav-item">Your Top Songs:</h2>
         <button value="Month" id="short-term" onClick={e => handleTopSongsNavigation(e, 'short_term')}>
           Month
         </button>
         <button value="Six Months" id="medium-term" onClick={e => handleTopSongsNavigation(e, 'medium_term')}>
           Six Months
         </button>
-        <button value="Few Years" id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
-          Few Years
+        <button value="All Time" id="long-term" onClick={e => handleTopSongsNavigation(e, 'long_term')}>
+          All Time
         </button>
         <button className="top-songs-nav-item" onClick={logoutUser}>Logout</button>
       </section>

@@ -1,24 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TopSongsItem from './TopSongsItem';
 import '../styles/TopSongsChart.css';
 
 function TopSongsChart({ songs }) {
-
-  function adjustContentToFitScreen() {
-    const windowWidth = window.innerWidth || 
-                        document.documentElement.clientWidth ||
-                        document.body.clientWidth;
-    const songPopularity = document.querySelector('#song-popularity');
-    if (windowWidth <= 500)
-      songPopularity.textContent = 'Pop.';
-    else
-      songPopularity.textContent = 'Popularity';
-  }
-
-  useEffect(() => {
-    window.onresize = adjustContentToFitScreen;
-  });
-
   return (
     <div className="top-songs-chart">
       <header className="top-songs-chart-header">
