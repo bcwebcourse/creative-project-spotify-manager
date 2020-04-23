@@ -116,8 +116,8 @@ header .top-songs-title {
   }
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 420px) {
   header.top-songs-small-header .top-songs-button {
-    font-size: 2vw;
+    font-size: 1.8vw;
   }
 }
