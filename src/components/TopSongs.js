@@ -8,6 +8,7 @@ import '../styles/TopSongs.css';
 
 function TopSongs() {
   const [topSongs, setTopSongs] = useState([]);
+  const [isAscending, setIsAscending] = useState(true);
   const [createPlaylistSuccess, setCreatePlaylistSuccess] = useState(false);
   const [playlistId, setPlaylistId] = useState('');
 
@@ -60,12 +61,21 @@ function TopSongs() {
       }
     });
     setPlaylistId(createPlaylistData.id);
+    const songsToAdd = isAscending ? topSongs : topSongs.reverse();
     const addSongsData = await spotify.post({
       endpoint: `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`,
       accessToken,
-      body: topSongs.map(song => song.uri)
+      body: songsToAdd.map(song => song.uri)
     });
     if (addSongsData.snapshot_id) setCreatePlaylistSuccess(true);
+  }
+
+  function handleReorder(e) {
+    if (isAscending)
+      e.target.textContent = 'Order Ascending';
+    else
+      e.target.textContent = 'Order Descending';
+    setIsAscending(!isAscending);
   }
 
   function getTopSongsTitle() {
@@ -90,8 +100,12 @@ function TopSongs() {
       }
       <header className="top-songs-small-header">
         <div className="top-songs-small-header-buttons">
-          <button className="spotify-button top-songs-button">
-            Filter Button
+          <button 
+           value="Descending"
+           className="spotify-button top-songs-button small-header-order"
+           onClick={handleReorder}
+          >
+            Order Descending
           </button>
           <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
             Create Playlist
@@ -100,16 +114,20 @@ function TopSongs() {
         <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
       </header>
       <header className="top-songs-large-header">
-        <button className="spotify-button top-songs-button">
-          Filter Button
-        </button>
+          <button
+           value="Descending"
+           className="spotify-button top-songs-button large-header-order"
+           onClick={handleReorder}
+          >
+            Order Descending
+          </button>
         <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
         <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
           Create Playlist
         </button>
       </header>
       {topSongs.length ?
-      <TopSongsChart songs={topSongs} /> :
+      <TopSongsChart songs={topSongs} isAscending={isAscending} /> :
       <h2 className="loading-indicator">Loading...</h2>}
     </div>
   );

@@ -109,7 +109,8 @@ nav button:active {
 
   nav .nav-body button {
     white-space: nowrap;
-    margin: 5px 5px 5px 5px;
+    margin: 10px 10px 10px 10px;
+    padding: 0;
     text-align: center;
   }
 }
