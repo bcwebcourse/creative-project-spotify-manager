@@ -32,6 +32,15 @@ function TopSongs() {
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
 
+  function getTopSongsTitle() {
+    if (timeframe === 'short_term')
+      return `Top Songs of the ${timeframeReadable}`;
+    else if (timeframe === 'medium_term')
+      return `Top Songs of the Past ${timeframeReadable}`;
+    else if (timeframe === 'long_term')
+      return `Top Songs of ${timeframeReadable}`;
+  }
+
   function handleNavigateHome() {
     window.location.href = process.env.PUBLIC_URL;
   }
@@ -55,7 +64,7 @@ function TopSongs() {
       endpoint: `https://api.spotify.com/v1/users/${userData.id}/playlists`,
       accessToken,
       body: {
-        name: `Top Songs of the Past ${timeframeReadable}`,
+        name: getTopSongsTitle(),
         description: 'This playlist was created for you by Spotify ' + 
                      `Manager on ${currentDate} at ${currentTime}.`
       }
@@ -76,15 +85,6 @@ function TopSongs() {
     else
       e.target.textContent = 'Order Descending';
     setIsAscending(!isAscending);
-  }
-
-  function getTopSongsTitle() {
-    if (timeframe === 'short_term')
-      return `Top Songs of the ${timeframeReadable}`;
-    else if (timeframe === 'medium_term')
-      return `Top Songs of the Past ${timeframeReadable}`;
-    else if (timeframe === 'long_term')
-      return `Top Songs of ${timeframeReadable}`;
   }
 
   return (
