@@ -3,12 +3,10 @@ import TopSongsItem from './TopSongsItem';
 import '../styles/TopSongsChart.css';
 
 function TopSongsChart({ songs, isAscending }) {
-  console.log(isAscending);
-  let topSongsItems = songs.map((song, idx) =>
-    <TopSongsItem key={idx} rank={idx + 1} song={song}/>
-  );
-  if (!isAscending)
-    topSongsItems = topSongsItems.reverse();
+  let topSongsItems = songs.map((song, idx) => {
+    const rank = isAscending ? idx + 1 : 50 - idx;
+    return <TopSongsItem key={idx} rank={rank} song={song}/>
+  });
 
   return (
     <div className="top-songs-chart">
