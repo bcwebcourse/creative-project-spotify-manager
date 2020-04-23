@@ -3,7 +3,7 @@ import TopSongsChart from './TopSongsChart';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { TimeframeContext } from '../contexts/TimeframeContextProvider';
 import * as spotify from '../utils/fetch';
-
+import { getCurrentDateString } from '../utils/date';
 import '../styles/TopSongs.css';
 
 function TopSongs() {
@@ -27,8 +27,9 @@ function TopSongs() {
       });
       setTopSongs(topSongsData.items);
     }
-    setCreatePlaylistSuccess(false);
     authenticateUser();
+    setCreatePlaylistSuccess(false);
+    setIsAscending(true);
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
 
@@ -55,36 +56,30 @@ function TopSongs() {
       endpoint: 'https://api.spotify.com/v1/me',
       accessToken
     });
-    const date = new Date();
-    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const timeOptions = { hour: '2-digit', minute: '2-digit' };
-    const currentDate = date.toLocaleDateString(undefined, dateOptions);
-    const currentTime = date.toLocaleTimeString([], timeOptions);
+    const order = isAscending ? 'ascending' : 'descending';
+    const range = isAscending ? '1 - 50' : '50 - 1';
     const createPlaylistData = await spotify.post({
       endpoint: `https://api.spotify.com/v1/users/${userData.id}/playlists`,
       accessToken,
       body: {
         name: getTopSongsTitle(),
         description: 'This playlist was created for you by Spotify ' + 
-                     `Manager on ${currentDate} at ${currentTime}.`
+                     `Manager on ${getCurrentDateString()}. Ranked in ` +
+                     `${order} order from ${range}.`
       }
     });
     setPlaylistId(createPlaylistData.id);
-    const songsToAdd = isAscending ? topSongs : topSongs.reverse();
     const addSongsData = await spotify.post({
       endpoint: `https://api.spotify.com/v1/playlists/${createPlaylistData.id}/tracks`,
       accessToken,
-      body: songsToAdd.map(song => song.uri)
+      body: topSongs.map(song => song.uri)
     });
     if (addSongsData.snapshot_id) setCreatePlaylistSuccess(true);
   }
 
   function handleReorder(e) {
-    if (isAscending)
-      e.target.textContent = 'Order Ascending';
-    else
-      e.target.textContent = 'Order Descending';
     setIsAscending(!isAscending);
+    setTopSongs(topSongs.reverse());
   }
 
   return (
@@ -101,11 +96,10 @@ function TopSongs() {
       <header className="top-songs-small-header">
         <div className="top-songs-small-header-buttons">
           <button 
-           value="Descending"
            className="spotify-button top-songs-button small-header-order"
            onClick={handleReorder}
           >
-            Order Descending
+            Order {isAscending ? 'Descending' : 'Ascending'}
           </button>
           <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
             Create Playlist
@@ -119,7 +113,7 @@ function TopSongs() {
            className="spotify-button top-songs-button large-header-order"
            onClick={handleReorder}
           >
-            Order Descending
+            Order {isAscending ? 'Descending' : 'Ascending'}
           </button>
         <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
         <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
