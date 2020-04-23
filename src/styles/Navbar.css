@@ -57,6 +57,8 @@ nav button {
   background-color: transparent;
   border: none;
   display: block;
+  top: 0;
+  transition: color .1s;
 }
 
 nav button:hover {
