@@ -1,20 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import TopSongsChart from './TopSongsChart';
 import { AuthContext } from '../contexts/AuthContextProvider';
-import { TimeframeContext } from '../contexts/TimeframeContextProvider';
-import * as spotify from '../utils/fetch';
 import { getCurrentDateString } from '../utils/date';
-
+import * as spotify from '../utils/fetch';
 import '../styles/TopSongs.css';
 
-function TopSongs() {
+function TopSongs({ timeframe, timeframeReadable }) {
   const [topSongs, setTopSongs] = useState([]);
   const [isAscending, setIsAscending] = useState(true);
   const [createPlaylistSuccess, setCreatePlaylistSuccess] = useState(false);
   const [playlistId, setPlaylistId] = useState('');
 
   const { accessToken, authenticateUser } = useContext(AuthContext);
-  const { timeframe, timeframeReadable } = useContext(TimeframeContext);
 
   useEffect(() => {
     async function fetchTopSongs() {
@@ -29,8 +26,9 @@ function TopSongs() {
       setTopSongs(topSongsData.items);
     }
     authenticateUser();
-    setCreatePlaylistSuccess(false);
+    setTopSongs([]);
     setIsAscending(true);
+    setCreatePlaylistSuccess(false);
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
 
