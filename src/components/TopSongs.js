@@ -77,8 +77,10 @@ function TopSongs({ timeframe, timeframeReadable }) {
   }
 
   function handleReorder(e) {
-    setIsAscending(!isAscending);
-    setTopSongs(topSongs.reverse());
+    if (topSongs.length) {
+      setIsAscending(!isAscending);
+      setTopSongs(topSongs.reverse());
+    }
   }
 
   return (
