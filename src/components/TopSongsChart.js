@@ -4,7 +4,7 @@ import '../styles/TopSongsChart.css';
 
 function TopSongsChart({ songs, isAscending }) {
   let topSongsItems = songs.map((song, idx) => {
-    const rank = isAscending ? idx + 1 : 50 - idx;
+    const rank = isAscending ? 50 - idx : idx + 1;
     return <TopSongsItem key={idx} rank={rank} song={song}/>
   });
 
