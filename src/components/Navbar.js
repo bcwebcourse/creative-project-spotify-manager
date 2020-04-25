@@ -1,12 +1,10 @@
 import React, { useContext, useLayoutEffect } from 'react';
-import { TimeframeContext } from '../contexts/TimeframeContextProvider';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { PageContext } from '../contexts/PageContextProvider';
 import publicUrl from '../utils/publicUrl';
 import '../styles/Navbar.css';
 
 function Navbar() {
-  const { setTimeframe, setTimeframeReadable } = useContext(TimeframeContext);
   const { logoutUser } = useContext(AuthContext);
   const { setPage } = useContext(PageContext);
 
@@ -35,9 +33,7 @@ function Navbar() {
 
   function handleTopSongsNavigation(e, timeframe) {
     styleNavButtons(e.target);
-    setTimeframe(timeframe);
-    setTimeframeReadable(e.target.value);
-    setPage('TopSongs');
+    setPage(`TopSongs-${timeframe}`);
   }
 
   return (
