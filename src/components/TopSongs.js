@@ -7,7 +7,7 @@ import '../styles/TopSongs.css';
 
 function TopSongs({ timeframe, timeframeReadable }) {
   const [topSongs, setTopSongs] = useState([]);
-  const [isAscending, setIsAscending] = useState(true);
+  const [isAscending, setIsAscending] = useState(false);
   const [createPlaylistSuccess, setCreatePlaylistSuccess] = useState(false);
   const [playlistId, setPlaylistId] = useState('');
 
@@ -27,7 +27,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
     }
     authenticateUser();
     setTopSongs([]);
-    setIsAscending(true);
+    setIsAscending(false);
     setCreatePlaylistSuccess(false);
     fetchTopSongs();
   }, [authenticateUser, accessToken, timeframe]);
@@ -39,6 +39,10 @@ function TopSongs({ timeframe, timeframeReadable }) {
       return `Top Songs of the Past ${timeframeReadable}`;
     else if (timeframe === 'long_term')
       return `Top Songs of ${timeframeReadable}`;
+  }
+
+  function getOrder(ascending) {
+    return ascending ? 'ascending' : 'descending';
   }
 
   function handleNavigateHome() {
@@ -55,8 +59,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
       endpoint: 'https://api.spotify.com/v1/me',
       accessToken
     });
-    const order = isAscending ? 'ascending' : 'descending';
-    const range = isAscending ? '1 - 50' : '50 - 1';
+    const range = isAscending ? '50 - 1' : '1 - 50';
     const createPlaylistData = await spotify.post({
       endpoint: `https://api.spotify.com/v1/users/${userData.id}/playlists`,
       accessToken,
@@ -64,7 +67,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
         name: getTopSongsTitle(),
         description: 'This playlist was created for you by Spotify ' + 
                      `Manager on ${getCurrentDateString()}. Ranked in ` +
-                     `${order} order from ${range}.`
+                     `${getOrder(isAscending)} order from ${range}.`
       }
     });
     setPlaylistId(createPlaylistData.id);
@@ -100,7 +103,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
            className="spotify-button top-songs-button small-header-order"
            onClick={handleReorder}
           >
-            Order {isAscending ? 'Descending' : 'Ascending'}
+            Order {getOrder(!isAscending)}
           </button>
           <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
             Create Playlist
@@ -114,7 +117,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
            className="spotify-button top-songs-button large-header-order"
            onClick={handleReorder}
           >
-            Order {isAscending ? 'Descending' : 'Ascending'}
+            Order {getOrder(!isAscending)}
           </button>
         <h2 className="top-songs-title">{getTopSongsTitle()}</h2>
         <button className="spotify-button top-songs-button" onClick={handleCreatePlaylist}>
