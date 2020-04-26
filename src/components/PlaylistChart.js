@@ -32,7 +32,10 @@ function PlaylistChart() {
   return (
     <div className="top-songs">
       <header className="top-songs-small-header">
-        <h2 className="top-songs-title">{playlist.name}</h2>
+        <h2 className="top-songs-title">{ playlist.name }</h2>
+      </header>
+      <header className="top-songs-large-header">
+        <h2 className="top-songs-title">{ playlist.name }</h2>
       </header>
       {songs.length ?
       <TopSongsChart songs={songs} isAscending={isAscending} /> :
