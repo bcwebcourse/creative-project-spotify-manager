@@ -8,9 +8,10 @@ import publicUrl from '../utils/publicUrl';
 
 function PlaylistChart() {
   const [songs, setSongs] = useState([]);
-  const { playlist} = useContext(PlaylistContext);
+  const { playlist } = useContext(PlaylistContext);
   const { accessToken, authenticateUser } = useContext(AuthContext);
   const [isAscending, setIsAscending] = useState(true);
+
   useEffect(() => {
     async function fetchPlayListTracks() {
         const endpoint = playlist.tracks.href;
@@ -22,21 +23,20 @@ function PlaylistChart() {
           }
         });
         const data = await res.json();
-        var i;
-        for (i = 0; i < data.items.length; i++){
-            data.items[i] = data.items[i].track;
-        }
-        setSongs(data.items);
+        const songData = data.items.map(item => item.track);
+        setSongs(songData);
       }
       setIsAscending(false);
     fetchPlayListTracks();
-    }, [accessToken, authenticateUser, playlist.tracks.href]);
+  }, [accessToken, authenticateUser, playlist.tracks.href]);
+
   function playlistImage() {
     if (playlist.images.length)
         return playlist.images[0].url;
     else
         return publicUrl('/empty-playlist.png');
     }
+
   return (
     <div className="top-songs">
       <header className="top-songs-small-header">

@@ -7,6 +7,7 @@ import publicUrl from '../utils/publicUrl';
 function PlaylistItem(props) {
   const { setPage } = useContext(PageContext);
   const { setPlaylist } = useContext(PlaylistContext);
+  
   function handlePlayListChange(e, playlistName) {
       setPage(`Playlist/${playlistName}`);
       setPlaylist(props.playlist);
