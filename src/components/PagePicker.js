@@ -9,7 +9,6 @@ import PlaylistChart from './PlaylistChart';
 function PagePicker() {
   const { userIsAuthenticated } = useContext(AuthContext);
   const { page } = useContext(PageContext);
-  console.log(page);
   if (!userIsAuthenticated())
     return <NotAuthenticated />
   if (page.startsWith('Playlist')){
@@ -25,7 +24,6 @@ function PagePicker() {
     case 'TopSongs-long_term':
       return <TopSongs timeframe={'long_term'} timeframeReadable={'All Time'}/>;
     default:
-      console.log("no");
       return <Home />;
   }
 }

@@ -26,10 +26,9 @@ function PlaylistChart() {
         }
         setSongs(data.items);
       }
-      setIsAscending(true);
+      setIsAscending(false);
     fetchPlayListTracks();
     }, [accessToken, authenticateUser, playlist.tracks.href]);
-    console.log(isAscending);
   return (
     <div className="top-songs">
       <header className="top-songs-small-header">
