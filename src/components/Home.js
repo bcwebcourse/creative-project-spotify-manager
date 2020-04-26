@@ -6,7 +6,6 @@ import Playlists from './Playlists';
 function Home() {
   const [userPlaylists, setUserPlaylists] = useState([]);
   const { accessToken, authenticateUser } = useContext(AuthContext);
-
   useEffect(() => {
     authenticateUser();
     async function fetchUserPlaylist() {
@@ -24,7 +23,6 @@ function Home() {
     }
     fetchUserPlaylist();
   }, [accessToken, authenticateUser]);
-
   return (
     <div className="home">
       <header className="home-header">

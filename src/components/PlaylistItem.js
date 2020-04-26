@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import '../styles/PlaylistItem.css';
+import { PageContext } from '../contexts/PageContextProvider';
+import { PlaylistContext} from '../contexts/PlaylistContextProvider';
 import publicUrl from '../utils/publicUrl';
 
 function PlaylistItem(props) {
-
+  const { setPage } = useContext(PageContext);
+  const { setPlaylist } = useContext(PlaylistContext);
+  
   function handlePlayListChange(e, playlistName) {
-      // props.setPage(playlistName);
-      console.log(playlistName);
+      setPage(`Playlist/${playlistName}`);
+      setPlaylist(props.playlist);
   }
 
   function playlistImage() {

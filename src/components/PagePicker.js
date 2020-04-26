@@ -4,17 +4,19 @@ import TopSongs from './TopSongs';
 import NotAuthenticated from './NotAuthenticated';
 import { AuthContext } from '../contexts/AuthContextProvider';
 import { PageContext } from '../contexts/PageContextProvider';
+import PlaylistChart from './PlaylistChart';
 
 function PagePicker() {
   const { userIsAuthenticated } = useContext(AuthContext);
   const { page } = useContext(PageContext);
-
   if (!userIsAuthenticated())
     return <NotAuthenticated />
-  
+  if (page.startsWith('Playlist')){
+    return <PlaylistChart />
+  }
   switch (page) {
     case 'Home':
-      return <Home />;
+      return <Home />;      
     case 'TopSongs-short_term':
       return <TopSongs timeframe={'short_term'} timeframeReadable={'Month'}/>;
     case 'TopSongs-medium_term':
