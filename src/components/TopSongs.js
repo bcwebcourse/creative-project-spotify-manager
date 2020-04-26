@@ -40,7 +40,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
     else if (timeframe === 'long_term')
       return `Top Songs of ${timeframeReadable}`;
   }
-
+  
   function handleNavigateHome() {
     window.location.href = process.env.PUBLIC_URL;
   }
@@ -48,7 +48,7 @@ function TopSongs({ timeframe, timeframeReadable }) {
   function handleOpenSpotifyPlaylists() {
     window.open(`https://open.spotify.com/playlist/${playlistId}`);
   }
-
+  
   async function handleCreatePlaylist(e) {
     authenticateUser();
     const userData = await spotify.get({
